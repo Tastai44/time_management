@@ -23,7 +23,10 @@ export default function page() {
 				</div>
 			</div>
 
-			<button className='mt-4 bg-[#9d00ff] text-white p-2 rounded-lg font-bold w-full'>Let&apos;s Start</button>
+			<button
+				className='mt-4 bg-[#9d00ff] text-white p-2 rounded-lg font-bold w-full'>
+				Let&apos;s Start
+			</button>
 		</div>
 
 	);

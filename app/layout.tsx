@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import MenuBar from "./components/MenuBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,7 @@ export default function RootLayout({
         antialiased mb-10 mt-10 mr-5 ml-5 bg-[#E2D2EC] flex justify-center`}
       >
         {children}
+        <MenuBar />
       </body>
     </html>
   );
