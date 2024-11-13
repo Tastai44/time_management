@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ProgressCard from '../components/ProgressCard';
+import TaskGroupCard from '../components/TaskGroupCard';
 
 export default function Page() {
     const percentage = 10; // Dynamic percentage
@@ -29,7 +30,7 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between bg-purple-600 text-white p-6 rounded-2xl shadow-lg w-full max-w-sm mt-5">
+            <div className="flex items-center justify-between bg-purple-600 text-white p-6 rounded-2xl shadow-lg w-full mt-5">
                 <div>
                     <p className="text-lg font-semibold">Your today&apos;s task</p>
                     <p className="text-sm mt-1">almost done!</p>
@@ -88,6 +89,10 @@ export default function Page() {
                 <div className="bg-purple-100 text-purple-600 text-[12px] font-medium px-2 py-0.5 rounded-full">
                     6
                 </div>
+            </div>
+
+            <div className='flex flex-col'>
+                <TaskGroupCard taskGroup={'Office Project'} taskNumber={0} completeTask={0} />
             </div>
 
         </div>

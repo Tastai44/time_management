@@ -7,7 +7,7 @@ interface cardType {
 
 export default function ProgressCard(props: cardType) {
     return (
-        <div className="bg-[#E7F3FF] p-4 rounded-lg shadow-md w-60">
+        <div className="bg-[#FFFFFF] p-4 rounded-lg shadow-md w-60">
             <div className="flex items-center space-x-2 justify-between">
                 <div className="text-sm font-medium text-gray-600">{props.taskGroup}</div>
                 <div className="bg-pink-100 text-pink-600 p-1 rounded-full">
