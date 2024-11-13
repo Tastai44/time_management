@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} 
         ${geistMono.variable} 
-        antialiased mb-10 mt-10 mr-5 ml-5 bg-[#E2D2EC] flex justify-center`}
+        antialiased mb-10 mt-10 mr-5 ml-5 bg-gray-100 flex justify-center`}
       >
         {children}
         <MenuBar />

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function MenuBar() {
     return (
-        <div className="bg-white fixed bottom-0 w-full shadow-lg rounded-t-3xl">
+        <div className="bg-[#DFD5FC] fixed bottom-0 w-full shadow-lg rounded-t-3xl">
             <div className="relative flex justify-between items-center px-6 py-2">
                 {/* Menu Items with Hover and Active States */}
                 <div className="text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
