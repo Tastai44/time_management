@@ -11,6 +11,7 @@ export default function page() {
 					width={300}
 					height={200}
 					className='rounded-lg'
+					priority
 				/>
 			</div>
 

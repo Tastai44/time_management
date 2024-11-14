@@ -15,9 +15,10 @@ export default function Page() {
                         <Image
                             src="/output.jpg"
                             alt="Landscape picture"
-                            width={59}
-                            height={50}
-                            className='rounded-full'
+                            width={60}
+                            height={60}
+                            className='rounded-full w-auto h-auto'
+                            priority
                         />
                     </div>
                     <div>
@@ -25,8 +26,12 @@ export default function Page() {
                         <div className="text-[20px] font-bold">Name</div>
                     </div>
                 </div>
-                <div className="text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
-                    <i className="fa-solid fa-bell text-xl"></i>
+                <div className="relative text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
+                    {/* Bell Icon */}
+                    <i className="fa-solid fa-bell text-3xl"></i>
+
+                    {/* Notification Badge */}
+                    <div className="absolute top-0 right-0 w-4 h-4 bg-purple-600 rounded-full border-2 border-white text-white text-[8px] text-center flex justify-center">1</div>
                 </div>
             </div>
 
@@ -92,7 +97,7 @@ export default function Page() {
             </div>
 
             <div className='flex flex-col'>
-                <TaskGroupCard taskGroup={'Office Project'} taskNumber={0} completeTask={0} />
+                <TaskGroupCard taskGroup={'Office Project'} taskNumber={10} completeTask={5} />
             </div>
 
         </div>
