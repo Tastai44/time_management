@@ -25,7 +25,7 @@ export default function MenuBar() {
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 ">
                     <div className='bg-[#F8FDFA] w-14 h-14 rounded-full shadow-lg flex justify-center items-center'>
                         <div className="w-12 h-12 bg-purple-600 rounded-full shadow-lg flex justify-center items-center hover:bg-purple-500 active:bg-purple-700 cursor-pointer transition duration-200">
-                            <button className="text-white text-3xl">+</button>
+                            <button className="text-white text-3xl"><Link href="/addTask">+</Link></button>
                         </div>
                     </div>
 
