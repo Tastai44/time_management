@@ -1,10 +1,11 @@
 'use client';
 import { useRouter } from "next/navigation";
+import Calendar from "../components/Calendar";
 
 export default function Page() {
     const router = useRouter();
     return (
-        <div>
+        <div className="flex flex-col">
             <div className="flex justify-between items-center mb-6">
                 <div
                     onClick={() => router.back()}
@@ -21,6 +22,7 @@ export default function Page() {
                     <div className="absolute top-0 right-0 w-4 h-4 bg-purple-600 rounded-full border-2 border-white text-white text-[8px] text-center flex justify-center">1</div>
                 </div>
             </div>
+            <Calendar />
         </div>
     );
 }
