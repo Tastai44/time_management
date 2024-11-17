@@ -16,9 +16,8 @@ export default function MenuBar() {
                     <Link href="/home"><i className="fas fa-home text-xl"></i></Link>
                 </div>
                 <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
-                    <i className="fas fa-calendar-alt text-xl"></i>
+                    <Link href="/calendar"><i className="fas fa-calendar-alt text-xl"></i></Link>
                 </div>
-
                 <div />
 
                 {/* Floating Center Button */}

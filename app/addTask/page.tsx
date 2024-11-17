@@ -32,7 +32,7 @@ const AddProject = () => {
                     >
                         <i className="fa-solid fa-arrow-left text-lg"></i>
                     </div>
-                    <div className="text-2xl font-bold text-gray-800">Add Project</div>
+                    <div className="text-xl font-bold text-gray-800">Add Project</div>
                     <div />
                 </div>
 
