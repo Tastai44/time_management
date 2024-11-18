@@ -13,20 +13,7 @@ export default function TaskGroupCard(props: ITaskGroup) {
             {/* Icon and Text */}
             <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-12 h-12 bg-pink-100 rounded-lg">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-pink-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3 7h18M9 10h6M4 6v14h16V6m-6 4H9m0 0V4h6v6m-6 0H9m3 6h.01M7 16h10m2 0v-2m0-6V6m0 10V6M3 6v10"
-                        />
-                    </svg>
+                    <i className="fa-solid fa-briefcase text-[#F478B8] text-[20px]"></i>
                 </div>
                 <div>
                     <h3 className="text-lg font-semibold text-gray-800">{props.taskGroup}</h3>

@@ -9,30 +9,31 @@ export default function Page() {
     const offset = circumference * (1 - percentage / 100);
     return (
         <div>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between items-center">
                 <div className="flex gap-5">
-                    <div>
-                        <Image
-                            src="/output.jpg"
-                            alt="Landscape picture"
-                            width={60}
-                            height={60}
-                            className='rounded-full w-auto h-auto'
-                            priority
-                        />
-                    </div>
                     <div>
                         <h3>Hello!</h3>
                         <div className="text-[20px] font-bold">Name</div>
                     </div>
                 </div>
+                {/* <div className="relative text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
+                    <i className="fa-solid fa-bell text-3xl"></i>
+                    <div className="absolute top-0 right-0 w-4 h-4 bg-purple-600 rounded-full border-2 border-white text-white text-[8px] text-center flex justify-center">1</div>
+                </div> */}
                 <div className="relative text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
                     {/* Bell Icon */}
-                    <i className="fa-solid fa-bell text-3xl"></i>
-
-                    {/* Notification Badge */}
-                    <div className="absolute top-0 right-0 w-4 h-4 bg-purple-600 rounded-full border-2 border-white text-white text-[8px] text-center flex justify-center">1</div>
+                    <div>
+                        <Image
+                            src="/output.jpg"
+                            alt="Landscape picture"
+                            width={45}
+                            height={45}
+                            className='rounded-full w-auto h-auto'
+                            priority
+                        />
+                    </div>
                 </div>
+
             </div>
 
             <div className="flex items-center justify-between bg-purple-600 text-white p-6 rounded-2xl shadow-lg w-full mt-5">

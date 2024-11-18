@@ -22,7 +22,7 @@ const Calendar = () => {
                         onClick={() => setSelectedDate(date)}
                     >
                         <span className="text-[16px] font-bold">{format(date, "MMM dd")}</span>
-                        <span className="text-[14px] ">{format(date, "EEE")}</span>
+                        <span className="text-[14px]">{format(date, "EEE")}</span>
                     </div>
                 );
             })}

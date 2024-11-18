@@ -31,10 +31,10 @@ export default function MenuBar() {
                 </div>
 
                 <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
-                    <i className="fas fa-file-alt text-xl"></i>
+                    <i className="fa-regular fa-bell text-xl"></i>
                 </div>
                 <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
-                    <i className="fas fa-users text-xl"></i>
+                    <i className="fas fa-user text-xl"></i>
                 </div>
             </div>
         </div>
