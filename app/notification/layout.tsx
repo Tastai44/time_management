@@ -1,4 +1,4 @@
-export default function HomneLayout({
+export default function NotificationLayout({
     children,
 }: {
     children: React.ReactNode;
