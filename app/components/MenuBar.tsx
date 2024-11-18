@@ -10,12 +10,15 @@ export default function MenuBar() {
             <div className="relative flex justify-between items-center px-6 py-4">
                 {/* Menu Items */}
                 <div
-                    className={`cursor-pointer transition duration-200 ${router == '/home' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'
-                        }`}
+                    className={`cursor-pointer transition duration-200 
+                        ${router == '/home' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'}`}
                 >
                     <Link href="/home"><i className="fas fa-home text-xl"></i></Link>
                 </div>
-                <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
+                <div
+                    className={`cursor-pointer transition duration-200 
+                        ${router == '/calendar' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'}`}
+                >
                     <Link href="/calendar"><i className="fas fa-calendar-alt text-xl"></i></Link>
                 </div>
                 <div />
@@ -30,8 +33,11 @@ export default function MenuBar() {
 
                 </div>
 
-                <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
-                    <i className="fa-regular fa-bell text-xl"></i>
+                <div
+                    className={`cursor-pointer transition duration-200 
+                        ${router == '/notification' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'}`}
+                >
+                    <Link href="/notification"><i className="fa-regular fa-bell text-xl"></i></Link>
                 </div>
                 <div className="text-[#B5A0F3] cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
                     <i className="fas fa-user text-xl"></i>
