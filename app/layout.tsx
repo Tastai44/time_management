@@ -24,12 +24,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} 
         ${geistMono.variable} 
-        antialiased mt-8 mr-5 ml-5 bg-gradient-to-b from-purple-50 to-blue-100 flex justify-center h-[90vh]`}
+        antialiased mt-8 mr-5 ml-5 bg-gradient-to-b from-purple-50 to-blue-100 flex justify-center h-[100vh]`}
       >
         {children}
         <MenuBar />

@@ -1,7 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
+// import prisma from './lib/db';
 
-export default function page() {
+export default async function page() {
+	// const project = await prisma.project.findMany({
+	// 	where: { ownerId: "cm3r00rmq000056tl5kwgllct" },
+	// 	include: { owner: true }, // Include the associated owner data
+	// });
+
 	return (
 		<div className='flex flex-col items-center justify-center h-[85vh] text-center gap-y-3'>
 			<div>
