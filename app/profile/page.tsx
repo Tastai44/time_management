@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import { getUserById } from '../api/user';
 export default async function Page() {
-    const userData = await getUserById();
 
     // console.log(userData);
 
@@ -30,8 +28,8 @@ export default async function Page() {
 
             {/* Profile Details */}
             <div className="text-center mb-6">
-                <div className="text-lg font-semibold text-gray-900">{userData?.name}</div>
-                <div className="text-sm text-gray-700">{userData?.email}</div>
+                <div className="text-lg font-semibold text-gray-900">Tastai</div>
+                <div className="text-sm text-gray-700">tastthai.654@gmail.com</div>
             </div>
 
             {/* Progress Section */}
