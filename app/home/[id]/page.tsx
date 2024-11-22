@@ -1,9 +1,16 @@
 import Image from 'next/image';
-import ProgressCard from '../components/ProgressCard';
-import TaskGroupCard from '../components/TaskGroupCard';
-import ProtectedRoute from '../components/protectRoute';
+import ProgressCard from '../../components/ProgressCard';
+import TaskGroupCard from '../../components/TaskGroupCard';
+import ProtectedRoute from '../../components/protectRoute';
 
-export default function Page() {
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ id: string; }>;
+}) {
+    const slug = (await params).id;
+    console.log(slug);
+
     const percentage = 10; // Dynamic percentage
     const radius = 40; // Radius of the circle
     const circumference = 2 * Math.PI * radius; // Total circumference of the circle

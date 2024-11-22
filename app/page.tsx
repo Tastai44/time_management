@@ -32,7 +32,7 @@ export default async function page() {
 
 			<button
 				className='mt-4 bg-[#9d00ff] text-white p-2 rounded-lg font-bold w-full'>
-				Let&apos;s Start
+				<a href="/login">Let&apos;s Start</a>
 			</button>
 		</div>
 
