@@ -1,6 +1,5 @@
 'use client';
 import { useState } from "react";
-import { addUser } from "../api/user";
 import { IAddUser } from "../interfaces/User";
 
 
@@ -29,12 +28,7 @@ export default function Page() {
             createdAt: now,
             updatedAt: now,
         };
-        try {
-            const newUser = await addUser(user);
-            console.log("User created:", newUser);
-        } catch (error) {
-            console.error("Error creating user:", error);
-        }
+        console.log(user);
     };
 
     // const handleLogin = async (e: React.FormEvent) => {
