@@ -37,6 +37,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           router.push('/login');
         } else {
           const data = await response.json();
+          localStorage.setItem("userId", data.user.userId);
           setUser(data.user); // Set the user data received from the API
         }
       } catch (error) {

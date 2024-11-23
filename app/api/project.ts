@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IAddProject } from "../interfaces/Project";
+import { IAddProject, IProject } from "../interfaces/Project";
 
 export const postProject = async (project: IAddProject) => {
     try {
@@ -13,6 +13,17 @@ export const postProject = async (project: IAddProject) => {
             ownerId: project.ownerId
         });
         console.log("Crate successful:", response.data);
+    } catch (error) {
+        console.error("Failed to login:", error);
+        throw error; // rethrow error for further handling if needed
+    }
+};
+
+export const getProjectByUserId = async (userId: string) => {
+    console.log(userId);
+    try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects/${userId}`);
+        return response.data as IProject[];
     } catch (error) {
         console.error("Failed to login:", error);
         throw error; // rethrow error for further handling if needed

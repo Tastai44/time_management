@@ -4,12 +4,30 @@ import ProgressCard from '../components/ProgressCard';
 import TaskGroupCard from '../components/TaskGroupCard';
 import ProtectedRoute from '../components/protectRoute';
 import { IUser } from '../interfaces/User';
+import { useEffect, useState } from 'react';
+import { IProject } from '../interfaces/Project';
+import { getProjectByUserId } from '../api/project';
 
 export default function Page() {
     const percentage = 10; // Dynamic percentage
     const radius = 40; // Radius of the circle
     const circumference = 2 * Math.PI * radius; // Total circumference of the circle
     const offset = circumference * (1 - percentage / 100);
+    const [projects, setProjects] = useState<IProject[]>();
+
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        const fetch = async () => {
+            if (userId !== undefined || userId !== "") {
+                const data = await getProjectByUserId(userId);
+                setProjects(data);
+            }
+        };
+        fetch();
+    }, []);
+
+    console.log(projects);
+
     return (
         <ProtectedRoute>
             {(user: IUser) => <div>

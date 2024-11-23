@@ -7,7 +7,7 @@ export interface IAddUser {
 }
 
 export interface IUser {
-    id: string;
+    userId: string;
     email: string;
     name: string;
     password: string;
