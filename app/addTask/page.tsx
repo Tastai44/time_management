@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 const AddProject = () => {
     const router = useRouter();
     const [project, setProject] = useState({
-        taskGroup: "Work",
+        groupName: "Work",
         projectName: "",
         description: "",
+        status: "Todo",
         startDate: "",
         endDate: "",
     });
@@ -43,11 +44,11 @@ const AddProject = () => {
                             Task Group
                         </label>
                         <select
-                            id="taskGroup"
-                            name="taskGroup"
-                            value={project.taskGroup}
+                            id="groupName"
+                            name="groupName"
+                            value={project.groupName}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
                         >
                             <option value="Work">Work</option>
                             <option value="Personal">Personal</option>
@@ -67,7 +68,7 @@ const AddProject = () => {
                             value={project.projectName}
                             onChange={handleInputChange}
                             placeholder="Enter project name"
-                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
 
@@ -82,9 +83,25 @@ const AddProject = () => {
                             value={project.description}
                             onChange={handleInputChange}
                             placeholder="Enter project description"
-                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
                             rows={3}
                         />
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="taskGroup" className="block text-sm font-medium text-gray-600">
+                            Status
+                        </label>
+                        <select
+                            id="status"
+                            name="status"
+                            value={project.status}
+                            onChange={handleInputChange}
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
+                        >
+                            <option value="Todo">Todo</option>
+                            <option value="inprogress">Inprogress</option>
+                        </select>
                     </div>
 
                     {/* Start Date */}
@@ -98,7 +115,7 @@ const AddProject = () => {
                             type="date"
                             value={project.startDate}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
 
@@ -113,7 +130,7 @@ const AddProject = () => {
                             type="date"
                             value={project.endDate}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full p-2 border-gray-300 rounded-xl bg-white focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
 

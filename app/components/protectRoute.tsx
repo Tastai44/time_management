@@ -1,8 +1,14 @@
 'use client';
+import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { IUser } from '../interfaces/User';
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode; }> = ({ children }) => {
+type ProtectedRouteProps = {
+  children: (user: IUser) => ReactNode; // Declare children as a function
+};
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState(null); // State to hold user info
   const [loading, setLoading] = useState(true); // Loading state
@@ -49,7 +55,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; }> = ({ children }) 
     return <div>Loading...</div>;
   }
 
-  return <>{user && children}</>; // Render children only if user data is present
+  return <>{user && children(user)}</>; // Call children as a function with user
 };
 
 export default ProtectedRoute;

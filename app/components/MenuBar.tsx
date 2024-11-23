@@ -8,7 +8,7 @@ export default function MenuBar() {
     return (
         <>
             {
-                (router !== "/" && router !== "/login") && (
+                (router !== "/" && router !== "/login" && router !== "/addTask") && (
                     <div className="bg-[#DFD5FC] fixed bottom-0 w-full shadow-lg rounded-t-3xl">
                         <div className="relative flex justify-between items-center px-6 py-4">
                             {/* Menu Items */}

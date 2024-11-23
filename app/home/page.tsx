@@ -1,7 +1,9 @@
+'use client';
 import Image from 'next/image';
 import ProgressCard from '../components/ProgressCard';
 import TaskGroupCard from '../components/TaskGroupCard';
 import ProtectedRoute from '../components/protectRoute';
+import { IUser } from '../interfaces/User';
 
 export default function Page() {
     const percentage = 10; // Dynamic percentage
@@ -10,12 +12,12 @@ export default function Page() {
     const offset = circumference * (1 - percentage / 100);
     return (
         <ProtectedRoute>
-            <div>
+            {(user: IUser) => <div>
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex gap-5">
                         <div>
                             <h3>Hello!</h3>
-                            <div className="text-[20px] font-bold">Name</div>
+                            <div className="text-[20px] font-bold">{user.name}</div>
                         </div>
                     </div>
                     {/* <div className="relative text-purple-800 cursor-pointer hover:text-purple-600 active:text-purple-900 transition duration-200">
@@ -102,7 +104,8 @@ export default function Page() {
                 <div className='flex flex-col'>
                     <TaskGroupCard taskGroup={'Office Project'} taskNumber={10} completeTask={5} />
                 </div>
-            </div>
+            </div>}
+
         </ProtectedRoute>
     );
 }
