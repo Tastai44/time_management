@@ -15,7 +15,7 @@ export default function Page() {
     const radius = 40;
     const circumference = 2 * Math.PI * radius;
     const offset = circumference * (1 - percentage / 100);
-    const [projects, setProjects] = useState<IProject[] | null>(null); // Initialize as null for loading check
+    const [projects, setProjects] = useState<IProject[] | null>(null);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
     useEffect(() => {
@@ -140,13 +140,16 @@ export default function Page() {
                             <div className="overflow-x-auto">
                                 <div className="flex space-x-4 w-max">
                                     {projects.filter((data) => data.status === "Doing" || data.status == "Todo").length !== 0 ? (
-                                        projects.filter((data) => data.status === "Doing" || data.status == "Todo").map((data, index) => (
-                                            <ProgressCard
-                                                key={index}
-                                                taskGroup={data.groupName}
-                                                projectName={data.projectName}
-                                            />
-                                        ))
+                                        projects
+                                            .filter((data) => data.status === "Doing" || data.status === "Todo")
+                                            .map((data) => (
+                                                <a key={data.id} href={`/project/${data.id}`}>
+                                                    <ProgressCard
+                                                        taskGroup={data.groupName}
+                                                        projectName={data.projectName}
+                                                    />
+                                                </a>
+                                            ))
                                     ) : (
                                         <div>Good job! You have no work left.</div>
                                     )}

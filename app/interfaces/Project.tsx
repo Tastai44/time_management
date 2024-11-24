@@ -9,6 +9,7 @@ export interface IAddProject {
 }
 
 export interface IProject {
+    id: string;
     groupName: string,
     projectName: string,
     description: string,

@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} 
         ${geistMono.variable} 
-        antialiased mt-8 mr-5 ml-5 bg-gradient-to-b from-white to-purple-100 flex justify-center h-[100vh]`}
+        antialiased mt-8 mr-5 ml-5 flex justify-center h-[100vh] bg-gray-100`}
       >
         {children}
         <MenuBar />

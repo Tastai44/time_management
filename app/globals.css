@@ -2,21 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
-  --background: #ffffff;
+  --background: #B06CFF; /* Purple-100 from Tailwind CSS */
   --foreground: #171717;
+  font-family: "Poppins", sans-serif;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background: #B06CFF; /* Purple-100 from Tailwind CSS */
+    --foreground: #171717;
+}
 }
 
 body {
   color: "#171717";
-  background: '#E2D2EC';
+  background-color: "#B06CFF";
   font-family: Arial, Helvetica, sans-serif;
 }
