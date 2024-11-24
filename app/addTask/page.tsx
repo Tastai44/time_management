@@ -121,7 +121,7 @@ const AddProject = () => {
                                 bg-white outline-none"
                             >
                                 <option value="Todo">Todo</option>
-                                <option value="inprogress">Inprogress</option>
+                                <option value="Doing">Doing</option>
                             </select>
                         </div>
 

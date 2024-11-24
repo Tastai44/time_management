@@ -20,7 +20,6 @@ export const postProject = async (project: IAddProject) => {
 };
 
 export const getProjectByUserId = async (userId: string) => {
-    console.log(userId);
     try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects/${userId}`);
         return response.data as IProject[];

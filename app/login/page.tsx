@@ -88,6 +88,7 @@ export default function Page() {
                                 value={formData.password}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                autoComplete="current-password"
                             />
                             <div className="flex justify-between items-center mt-4">
                                 <button
@@ -119,6 +120,7 @@ export default function Page() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                                autoComplete="username"
                             />
                             <input
                                 type="password"
@@ -127,6 +129,7 @@ export default function Page() {
                                 value={formData.password}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                                autoComplete="current-password"
                             />
                             <div className="flex justify-between items-center mt-4">
                                 <button
