@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TaskCard from "../components/TaskCard";
 import { IProject } from "../interfaces/Project";
 import { getProjectByUserId } from "../api/project";
+import Skeleton from "../components/Skeleton";
 
 export default function Page() {
     const [status, setStatus] = useState("All");
@@ -13,8 +14,6 @@ export default function Page() {
 
     useEffect(() => {
         const userId = localStorage.getItem("userId");
-
-
         const fetchProjects = async () => {
             if (userId) {
                 const data = await getProjectByUserId(userId);
@@ -39,7 +38,11 @@ export default function Page() {
     return (
         <>
             {
-                projects && (
+                !projects ? (
+                    <>
+                        <Skeleton />
+                    </>
+                ) : (
                     <div className="flex flex-col">
                         <div className="flex justify-center items-center mb-6">
                             <div className="text-3xl font-bold text-gray-800">Tasks</div>
@@ -66,18 +69,24 @@ export default function Page() {
                                         format(date, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd");
                                     return (
                                         <div
-                                            key={date.getTime()} // Use a unique key
-                                            className={`flex flex-col items-center p-1 rounded-lg cursor-pointer transition-all
-                                ${isSelected
-                                                    ? "bg-purple-600 text-white text-center border border-purple-600"
-                                                    : "bg-white hover:bg-gray-200 text-center border"
+                                            key={date.getTime()}
+                                            className={`flex flex-col items-center justify-center p-2 md:p-3 lg:p-4 rounded-lg cursor-pointer transition-all 
+                                            ${isSelected
+                                                    ? "bg-purple-600 text-white border border-purple-600"
+                                                    : "bg-white hover:bg-gray-200 border"
                                                 }
-                            `}
+                                            w-[60px] sm:w-[80px] md:w-[100px] lg:w-[120px] 
+                                            h-[70px] sm:h-[90px] md:h-[110px] lg:h-[130px]`}
                                             onClick={() => setSelectedDate(date)}
                                         >
-                                            <span className="text-[14px] font-bold">{format(date, "MMM dd")}</span>
-                                            <span className="text-[12px]">{format(date, "EEE")}</span>
+                                            <span className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-center">
+                                                {format(date, "MMM dd")}
+                                            </span>
+                                            <span className="text-[10px] sm:text-xs md:text-sm lg:text-base">
+                                                {format(date, "EEE")}
+                                            </span>
                                         </div>
+
                                     );
                                 })}
                             </div>

@@ -11,7 +11,6 @@ type ProtectedRouteProps = {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState(null); // State to hold user info
-  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -43,18 +42,11 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       } catch (error) {
         console.error('Error fetching protected data:', error);
         router.push('/login');
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchProtectedData();
   }, [router]);
-
-  if (loading) {
-    // You can display a loading spinner or message here while fetching
-    return <div>Loading...</div>;
-  }
 
   return <>{user && children(user)}</>; // Call children as a function with user
 };

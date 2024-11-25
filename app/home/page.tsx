@@ -8,6 +8,7 @@ import { IUser } from '../interfaces/User';
 import { useEffect, useState } from 'react';
 import { IProject } from '../interfaces/Project';
 import { getProjectByUserId } from '../api/project';
+import Skeleton from "../components/Skeleton";
 
 export default function Page() {
     const router = useRouter();
@@ -44,14 +45,10 @@ export default function Page() {
             {(user: IUser) => (
                 <div>
                     {!projects ? (
-                        // Loading Skeleton displayed while fetching data
                         <div className="space-y-4">
-                            <div className="w-3/4 h-6 bg-gray-300 rounded-md animate-pulse"></div>
-                            <div className="w-1/2 h-4 bg-gray-300 rounded-md animate-pulse"></div>
-                            <div className="w-full h-40 bg-gray-300 rounded-lg animate-pulse"></div>
+                            <Skeleton />
                         </div>
                     ) : (
-                        // Render UI once projects are loaded
                         <>
                             <div className="flex flex-row justify-between items-center">
                                 <div className="flex gap-5">
