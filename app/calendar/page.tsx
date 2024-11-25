@@ -1,28 +1,14 @@
 'use client';
 import { format, addDays, startOfWeek } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TaskCard from "../components/TaskCard";
-import { IProject } from "../interfaces/Project";
-import { getProjectByUserId } from "../api/project";
-import Skeleton from "../components/Skeleton";
+import ProtectedRoute from "../components/protectRoute";
+import { IUser } from "../interfaces/User";
 
 export default function Page() {
     const [status, setStatus] = useState("All");
-    const [projects, setProjects] = useState<IProject[] | null>(null);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [weekNumber, setWeekNumber] = useState(0);
-
-    useEffect(() => {
-        const userId = localStorage.getItem("userId");
-        const fetchProjects = async () => {
-            if (userId) {
-                const data = await getProjectByUserId(userId);
-                setProjects(data);
-            }
-        };
-        fetchProjects();
-    }, []);
-
     const getWeekDays = (weekOffset: number) => {
         const startDate = addDays(startOfWeek(new Date()), weekOffset * 7);
         return Array.from({ length: 7 }, (_, index) => addDays(startDate, index));
@@ -36,13 +22,9 @@ export default function Page() {
     };
 
     return (
-        <>
+        <ProtectedRoute>
             {
-                !projects ? (
-                    <>
-                        <Skeleton />
-                    </>
-                ) : (
+                (user: IUser, projects) => <>
                     <div className="flex flex-col">
                         <div className="flex justify-center items-center mb-6">
                             <div className="text-3xl font-bold text-gray-800">Tasks</div>
@@ -71,12 +53,12 @@ export default function Page() {
                                         <div
                                             key={date.getTime()}
                                             className={`flex flex-col items-center justify-center p-2 md:p-3 lg:p-4 rounded-lg cursor-pointer transition-all 
-                                            ${isSelected
+                                                ${isSelected
                                                     ? "bg-purple-600 text-white border border-purple-600"
                                                     : "bg-white hover:bg-gray-200 border"
                                                 }
-                                            w-[60px] sm:w-[80px] md:w-[100px] lg:w-[120px] 
-                                            h-[70px] sm:h-[90px] md:h-[110px] lg:h-[130px]`}
+                                                w-[60px] sm:w-[80px] md:w-[100px] lg:w-[120px] 
+                                                h-[70px] sm:h-[90px] md:h-[110px] lg:h-[130px]`}
                                             onClick={() => setSelectedDate(date)}
                                         >
                                             <span className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-center">
@@ -136,8 +118,8 @@ export default function Page() {
 
                         }
                     </div>
-                )
+                </>
             }
-        </>
+        </ProtectedRoute>
     );
 }

@@ -3,14 +3,29 @@ import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IUser } from '../interfaces/User';
+import { IProject } from '../interfaces/Project';
+import { getProjectByUserId } from '../api/project';
+import Skeleton from './Skeleton';
 
 type ProtectedRouteProps = {
-  children: (user: IUser) => ReactNode; // Declare children as a function
+  children: (user: IUser, projects: IProject[]) => ReactNode; // Declare children as a function
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState(null); // State to hold user info
+  const [projects, setProjects] = useState<IProject[] | null>(null);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    const fetchProjects = async () => {
+      if (userId) {
+        const data = await getProjectByUserId(userId);
+        setProjects(data);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -36,8 +51,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           router.push('/login');
         } else {
           const data = await response.json();
-          localStorage.setItem("userId", data.user.userId);
           setUser(data.user); // Set the user data received from the API
+          const fetchProjects = async () => {
+            const projectData = await getProjectByUserId(data.user.userId);
+            setProjects(projectData);
+          };
+          fetchProjects();
         }
       } catch (error) {
         console.error('Error fetching protected data:', error);
@@ -48,7 +67,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     fetchProtectedData();
   }, [router]);
 
-  return <>{user && children(user)}</>; // Call children as a function with user
+  if (!user || !projects) {
+    return (
+      <Skeleton />
+    );
+  }
+
+  return <>{(user && projects) && children(user, projects)}</>; // Call children as a function with user
 };
 
 export default ProtectedRoute;
