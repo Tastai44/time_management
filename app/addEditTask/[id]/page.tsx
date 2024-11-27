@@ -6,6 +6,11 @@ import { IAddProject } from "../../interfaces/Project";
 import ProtectedRoute from "../../components/protectRoute";
 import { IUser } from "../../interfaces/User";
 import * as yup from "yup";
+import { ValidationError } from "yup";
+
+type ValidationErrors = {
+    [key: string]: string;
+};
 
 const projectSchema = yup.object().shape({
     groupName: yup.string().required("Task group is required"),
@@ -45,7 +50,7 @@ const AddProject = ({
         startDate: new Date().toISOString().split("T")[0], // Default to today
         endDate: new Date().toISOString().split("T")[0],   // Default to today
     });
-    const [errors, setErrors] = useState<any>({});
+    const [errors, setErrors] = useState<ValidationErrors>({});
 
     useEffect(() => {
         params.then((res) => {
@@ -79,26 +84,23 @@ const AddProject = ({
         e.preventDefault();
 
         try {
-            // Validate project data against the schema
             await projectSchema.validate(project, { abortEarly: false });
-            const projectFormat: IAddProject = {
-                ...project,
-                ownerId: userId,
-            };
+            const projectFormat: IAddProject = { ...project, ownerId: userId };
 
             await updateProject(projectFormat, projectId, userId);
             router.push("/home");
             console.log("Project Submitted:", projectFormat);
-        } catch (validationError: any) {
-            if (validationError.inner) {
-                // Convert yup errors to a readable format
+        } catch (error: unknown) {
+            if (error instanceof ValidationError) {
                 const validationErrors: { [key: string]: string; } = {};
-                validationError.inner.forEach((err: any) => {
-                    validationErrors[err.path] = err.message;
+                error.inner.forEach((err) => {
+                    if (err.path) {
+                        validationErrors[err.path] = err.message;
+                    }
                 });
                 setErrors(validationErrors);
             } else {
-                console.error("Unexpected validation error:", validationError);
+                console.error("Unexpected validation error:", error);
             }
         }
     };
