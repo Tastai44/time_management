@@ -29,7 +29,10 @@ export default function TaskCard(props: IProps) {
                     )
                 }
             </div>
-            <div className="mt-2 text-lg font-bold text-gray-800">{props.description}</div>
+            <div className="mt-2 text-lg font-bold text-gray-800">
+                {props.description.length > 20 ? props.description.substring(0, 20) + "..." : props.description}
+            </div>
+
             <div className="flex flex-row justify-between items-center mt-4">
                 <div className="flex items-center text-gray-500 text-sm">
                     <span className="mr-2 text-sm">
