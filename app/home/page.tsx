@@ -6,13 +6,10 @@ import TaskGroupCard from '../components/TaskGroupCard';
 import ProtectedRoute from '../components/protectRoute';
 import { IUser } from '../interfaces/User';
 import { useState } from 'react';
+import OverallProgrss from "../components/OverallProgrss";
 
 export default function Page() {
     const router = useRouter();
-    const percentage = 10;
-    const radius = 40;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference * (1 - percentage / 100);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
     const toggleDropdown = () => {
@@ -27,7 +24,7 @@ export default function Page() {
 
     return (
         <ProtectedRoute>
-            {(user: IUser, projects) => <>
+            {(user: IUser, projects) => <div>
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex gap-5">
                         <div>
@@ -73,39 +70,9 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center justify-between bg-purple-600 text-white p-6 rounded-2xl shadow-lg w-full mt-5">
-                    <div>
-                        <p className="text-lg font-semibold">Your today&apos;s task</p>
-                        <p className="text-sm mt-1">almost done!</p>
-                        <button className="bg-white text-purple-600 font-bold text-sm px-4 py-2 mt-4 rounded-full shadow hover:bg-gray-100">
-                            View Task
-                        </button>
-                    </div>
-                    <div className="relative flex items-center justify-center w-24 h-24">
-                        <svg className="absolute w-full h-full transform -rotate-90">
-                            <circle
-                                cx="50%"
-                                cy="50%"
-                                r={radius}
-                                strokeWidth="10"
-                                stroke="#9F7AEA"
-                                fill="transparent"
-                            />
-                            <circle
-                                cx="50%"
-                                cy="50%"
-                                r={radius}
-                                strokeWidth="10"
-                                stroke="#FFFFFF"
-                                fill="transparent"
-                                strokeDasharray={circumference}
-                                strokeDashoffset={offset}
-                                strokeLinecap="round"
-                            />
-                        </svg>
-                        <div className="text-lg font-bold text-white">{percentage}%</div>
-                    </div>
-                </div>
+
+                <OverallProgrss />
+
                 <div className="flex items-center space-x-2 mt-5 mb-3">
                     <h2 className="text-xl font-bold text-gray-800">In Progress</h2>
                     <div className="bg-purple-100 text-purple-600 text-[12px] font-medium px-2 py-0.5 rounded-full">
@@ -133,23 +100,35 @@ export default function Page() {
                 <div className="flex items-center space-x-2 mt-5 mb-3">
                     <h2 className="text-xl font-bold text-gray-800">Task Groups</h2>
                 </div>
-                {projects.map((data, index) => (
-                    data.groupName == "Work" ? (
-                        <div key={index} className="flex flex-col">
-                            <TaskGroupCard taskGroup={data.groupName} taskNumber={projects.filter((data) => data.groupName == "Work").length} completeTask={projects.filter((data) => data.groupName == "Work" && data.status == "Completed").length} />
+                {projects.map((data) => (
+                    data.groupName === "Work" ? (
+                        <div key={`work-${data.id}`}>
+                            <TaskGroupCard
+                                groupName={data.groupName}
+                                taskNumber={projects.filter((data) => data.groupName === "Work").length}
+                                completeTask={projects.filter((data) => data.groupName === "Work" && data.status === "Done").length}
+                            />
                         </div>
-                    ) : data.groupName == "Personal" ? (
-                        <div className="flex flex-col">
-                            <TaskGroupCard taskGroup={data.groupName} taskNumber={projects.filter((data) => data.groupName == "Personal").length} completeTask={projects.filter((data) => data.groupName == "Personal" && data.status == "Completed").length} />
+                    ) : data.groupName === "Personal" ? (
+                        <div key={`personal-${data.id}`}>
+                            <TaskGroupCard
+                                groupName={data.groupName}
+                                taskNumber={projects.filter((data) => data.groupName === "Personal").length}
+                                completeTask={projects.filter((data) => data.groupName === "Personal" && data.status === "Done").length}
+                            />
                         </div>
                     ) : (
-                        <div className="flex flex-col">
-                            <TaskGroupCard taskGroup={data.groupName} taskNumber={projects.filter((data) => data.groupName == "Others").length} completeTask={projects.filter((data) => data.groupName == "Others" && data.status == "Completed").length} />
+                        <div key={`others-${data.id}`}>
+                            <TaskGroupCard
+                                groupName={data.groupName}
+                                taskNumber={projects.filter((data) => data.groupName === "Others").length}
+                                completeTask={projects.filter((data) => data.groupName === "Others" && data.status === "Done").length}
+                            />
                         </div>
                     )
                 ))}
 
-            </>}
+            </div>}
         </ProtectedRoute>
     );
 }

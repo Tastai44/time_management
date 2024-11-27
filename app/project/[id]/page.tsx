@@ -22,7 +22,7 @@ export default function Page({
 
     const handleEdit = (projectId: string) => {
         // Logic to edit project
-        alert(`Edit project ${projectId}`);
+        router.push(`/addEditTask/${projectId}`);
     };
 
     const handleDelete = async () => {
@@ -137,6 +137,7 @@ export default function Page({
                                     </div>
                                     <div>
                                         <button
+                                            onClick={() => router.back()}
                                             className="bg-gray-500 hover:bg-gray-600 text-white text-sm px-4 py-2 rounded-lg shadow-md"
                                         >
                                             Close

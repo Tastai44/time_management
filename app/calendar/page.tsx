@@ -33,13 +33,13 @@ export default function Page() {
                             <div className="flex justify-between items-center mb-2">
                                 <button
                                     onClick={handlePrevWeek}
-                                    className="text-[12px] px-3 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full shadow-md hover:from-purple-600 hover:to-indigo-600 transition-all duration-200"
+                                    className="text-[12px] px-3 py-1 text-black rounded-full shadow-md hover:bg-gray-200 transition-all duration-200"
                                 >
                                     &larr; Previous
                                 </button>
                                 <button
                                     onClick={handleNextWeek}
-                                    className="text-[12px] px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full shadow-md hover:from-indigo-600 hover:to-purple-600 transition-all duration-200"
+                                    className="text-[12px] px-3 py-1 text-black rounded-full shadow-md hover:bg-gray-200 transition-all duration-200"
                                 >
                                     Next &rarr;
                                 </button>
@@ -89,26 +89,32 @@ export default function Page() {
                                         (format(data.endDate, "yyyy-MM-dd") >= format(selectedDate, "yyyy-MM-dd"))
                                     )
                                     .map((project, index) => (
-                                        <TaskCard
-                                            key={index}
-                                            projectName={project.projectName}
-                                            description={project.description}
-                                            endDate={project.endDate}
-                                            status={project.status} /* Fixed: Use project.status */
-                                        />
+                                        <a key={project.id} href={`/project/${project.id}`}>
+                                            <TaskCard
+                                                key={index}
+                                                projectName={project.projectName}
+                                                groupName={project.groupName}
+                                                description={project.description}
+                                                endDate={project.endDate}
+                                                status={project.status} /* Fixed: Use project.status */
+                                            />
+                                        </a>
                                     ))
                             ) : status == "All" ? (
                                 projects.filter((data) =>
                                     (format(data.startDate, "yyyy-MM-dd") <= format(selectedDate, "yyyy-MM-dd")) &&
                                     (format(data.endDate, "yyyy-MM-dd") >= format(selectedDate, "yyyy-MM-dd"))
                                 ).map((project, index) => (
-                                    <TaskCard
-                                        key={index}
-                                        projectName={project.projectName}
-                                        description={project.description}
-                                        endDate={project.endDate}
-                                        status={project.status} /* Fixed: Use project.status */
-                                    />
+                                    <a key={project.id} href={`/project/${project.id}`}>
+                                        <TaskCard
+                                            key={index}
+                                            projectName={project.projectName}
+                                            groupName={project.groupName}
+                                            description={project.description}
+                                            endDate={project.endDate}
+                                            status={project.status} /* Fixed: Use project.status */
+                                        />
+                                    </a>
                                 ))
                             ) : (
                                 <div className="flex justify-center text-3xl mt-[130px] text-gray-300">

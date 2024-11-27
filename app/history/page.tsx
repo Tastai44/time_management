@@ -59,23 +59,29 @@ export default function Page() {
                                             projects.filter((data) => data.description.includes(searchInput) ||
                                                 data.groupName.includes(searchInput) || data.projectName.includes(searchInput)
                                             ).map((project, index) => (
-                                                <TaskCard
-                                                    key={index}
-                                                    projectName={project.projectName}
-                                                    description={project.description}
-                                                    endDate={project.endDate}
-                                                    status={project.status}
-                                                />
+                                                <a key={project.id} href={`/project/${project.id}`}>
+                                                    <TaskCard
+                                                        key={index}
+                                                        projectName={project.projectName}
+                                                        groupName={project.groupName}
+                                                        description={project.description}
+                                                        endDate={project.endDate}
+                                                        status={project.status}
+                                                    />
+                                                </a>
                                             ))
                                         ) : (
                                             projects.map((project, index) => (
-                                                <TaskCard
-                                                    key={index}
-                                                    projectName={project.projectName}
-                                                    description={project.description}
-                                                    endDate={project.endDate}
-                                                    status={project.status}
-                                                />
+                                                <a key={project.id} href={`/project/${project.id}`}>
+                                                    <TaskCard
+                                                        key={index}
+                                                        projectName={project.projectName}
+                                                        groupName={project.groupName}
+                                                        description={project.description}
+                                                        endDate={project.endDate}
+                                                        status={project.status}
+                                                    />
+                                                </a>
                                             ))
                                         )
                                     }
