@@ -32,7 +32,12 @@ export default function Page() {
             updatedAt: now,
         };
         try {
-            await register(formData.name, formData.email, formData.password);
+            await register(formData.name, formData.email, formData.password).then(async () => {
+                const user = await login(formData.email, formData.password);
+                if (user) {
+                    router.push("/home");
+                }
+            });
             // Add additional actions after registration if needed
         } catch (error) {
             console.error("Error creating user:", error);
