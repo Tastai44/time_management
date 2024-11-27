@@ -28,3 +28,13 @@ export const getProjectByUserId = async (userId: string) => {
         throw error; // rethrow error for further handling if needed
     }
 };
+
+export const deleteProject = async (projectId: string, userId: string) => {
+    try {
+        const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/projects/${projectId}/${userId}`);
+        return response.status;
+    } catch (error) {
+        console.error("Failed to login:", error);
+        throw error; // rethrow error for further handling if needed
+    }
+};

@@ -38,7 +38,7 @@ export default function MenuBar() {
 
                             <div
                                 className={`cursor-pointer transition duration-200 
-                        ${router == '/notification' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'}`}
+                        ${router == '/history' ? 'text-purple-900' : 'text-[#B5A0F3] hover:text-purple-600 active:text-purple-900'}`}
                             >
                                 <Link href="/history"><i className="fa-solid fa-book text-xl"></i></Link>
                             </div>

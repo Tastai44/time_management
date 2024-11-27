@@ -19,10 +19,10 @@ export default function TaskCard(props: IProps) {
             <div className="mt-2 text-lg font-bold text-gray-800">{props.description}</div>
             <div className="flex flex-row justify-between items-center mt-4">
                 <div className="flex items-center text-gray-500 text-sm">
-                    <span className="mr-2 text-lg">
-                        <i className="fa-regular fa-clock"></i>
+                    <span className="mr-2 text-sm">
+                        Deadline:
                     </span>
-                    <span>{format(props.endDate, "hh:mm a")}</span>
+                    <span>{format(props.endDate, "dd:MM:yyyy")}</span>
                 </div>
                 <div className="bg-purple-100 text-purple-700 text-xs font-semibold py-1 px-3 rounded-lg">{props.status}</div>
             </div>
