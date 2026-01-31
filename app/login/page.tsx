@@ -12,7 +12,7 @@ export default function Page() {
         email: "",
         password: "",
     });
-    const [loading, setLoading] = useState(false);  // Add loading state
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -24,7 +24,7 @@ export default function Page() {
 
     const handleAddUser = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);  // Set loading to true when starting the request
+        setLoading(true);
         const now = new Date().toISOString();
         const user: IAddUser = {
             ...formData,
@@ -38,18 +38,17 @@ export default function Page() {
                     router.push("/home");
                 }
             });
-            // Add additional actions after registration if needed
         } catch (error) {
             console.error("Error creating user:", error);
         } finally {
-            setLoading(false);  // Set loading to false when request is done
+            setLoading(false);
         }
         console.log(user);
     };
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);  // Set loading to true when starting the login request
+        setLoading(true);
         try {
             const user = await login(formData.email, formData.password);
             if (user) {
@@ -58,98 +57,120 @@ export default function Page() {
         } catch (error) {
             console.error("Error logging in:", error);
         } finally {
-            setLoading(false);  // Set loading to false when request is done
+            setLoading(false);
         }
     };
 
     return (
-        <div className="h-screen flex flex-col items-center justify-center">
-            <div className="w-full max-w-md">
+        <div className="h-screen flex flex-col items-center justify-center p-4">
+            <div className="w-full max-w-md bg-card border border-border p-8 rounded-2xl shadow-xl">
                 {isRegister ? (
                     <>
-                        <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-4">Create Account</h1>
-                        <p className="text-gray-500 text-center mb-6">Fill in the details to register</p>
-                        <form className="space-y-4" onSubmit={handleAddUser}>
-                            <input
-                                type="text"
-                                placeholder="Full Name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            />
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="example@gmail.com"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="••••••••"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                autoComplete="current-password"
-                            />
-                            <div className="flex justify-between items-center mt-4">
+                        <h1 className="text-3xl font-bold text-foreground text-center mb-2">Create Account</h1>
+                        <p className="text-muted-foreground text-center mb-8">Fill in the details to register</p>
+                        <form className="space-y-5" onSubmit={handleAddUser}>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1.5 ml-1">Full Name</label>
+                                <input
+                                    type="text"
+                                    placeholder="John Doe"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-background border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1.5 ml-1">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="example@gmail.com"
+                                    className="w-full px-4 py-3 bg-background border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1.5 ml-1">Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="••••••••"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-background border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                    autoComplete="current-password"
+                                />
+                            </div>
+
+                            <div className="pt-2">
+                                <button
+                                    type="submit"
+                                    className={`w-full py-3.5 rounded-xl font-medium shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-0.5 ${loading ? 'bg-muted text-muted-foreground cursor-not-allowed' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
+                                    disabled={loading}
+                                >
+                                    {loading ? 'Creating Account...' : 'Sign Up'}
+                                </button>
+                            </div>
+                            <div className="text-center mt-6">
                                 <button
                                     type="button"
                                     onClick={() => setIsRegister(false)}
-                                    className="text-purple-500 hover:underline text-sm"
+                                    className="text-primary hover:text-primary/80 hover:underline text-sm font-medium transition-colors"
                                 >
-                                    Already have an account?
-                                </button>
-                                <button
-                                    type="submit"
-                                    className={`px-6 py-2 rounded-lg shadow transition ${loading ? 'bg-gray-300 text-gray-600' : 'bg-purple-500 text-white hover:bg-purple-600'}`}  // Conditional background color
-                                    disabled={loading}  // Disable button during loading
-                                >
-                                    {loading ? 'Registering...' : 'Register'}
+                                    Already have an account? Sign In
                                 </button>
                             </div>
                         </form>
                     </>
                 ) : (
                     <>
-                        <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-4">Welcome Back!</h1>
-                        <p className="text-gray-500 text-center mb-6">Login to your account</p>
-                        <form className="space-y-4" onSubmit={handleLogin}>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="example@gmail.com"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
-                                autoComplete="username"
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="••••••••"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
-                                autoComplete="current-password"
-                            />
-                            <div className="flex justify-between items-center mt-4">
+                        <h1 className="text-3xl font-bold text-foreground text-center mb-2">Welcome Back!</h1>
+                        <p className="text-muted-foreground text-center mb-8">Login to your account</p>
+                        <form className="space-y-5" onSubmit={handleLogin}>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1.5 ml-1">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="example@gmail.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-background border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                    autoComplete="username"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-foreground mb-1.5 ml-1">Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="••••••••"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-background border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                    autoComplete="current-password"
+                                />
+                            </div>
+
+                            <div className="pt-2">
+                                <button
+                                    type="submit"
+                                    className={`w-full py-3.5 rounded-xl font-medium shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-0.5 ${loading ? 'bg-muted text-muted-foreground cursor-not-allowed' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
+                                    disabled={loading}
+                                >
+                                    {loading ? 'Logging in...' : 'Login'}
+                                </button>
+                            </div>
+
+                            <div className="text-center mt-6">
                                 <button
                                     type="button"
                                     onClick={() => setIsRegister(true)}
-                                    className="text-purple-500 hover:underline text-sm"
+                                    className="text-primary hover:text-primary/80 hover:underline text-sm font-medium transition-colors"
                                 >
-                                    Don&apos;t have an account?
-                                </button>
-                                <button
-                                    type="submit"
-                                    className={`px-6 py-2 rounded-lg shadow transition ${loading ? 'bg-gray-300 text-gray-600' : 'bg-purple-500 text-white hover:bg-purple-600'}`}  // Conditional background color
-                                    disabled={loading}  // Disable button during loading
-                                >
-                                    {loading ? 'Logging in...' : 'Login'}
+                                    Don&apos;t have an account? Create one
                                 </button>
                             </div>
                         </form>

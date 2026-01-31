@@ -21,7 +21,7 @@ export const register = async (name: string, email: string, password: string) =>
             email: email,
             password: password
         });
-        console.log("Login successful:", response.data);
+        // console.log("Login successful:", response.data);
     } catch (error) {
         console.error("Failed to login:", error);
         throw error; // rethrow error for further handling if needed

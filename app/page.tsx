@@ -3,38 +3,35 @@ import Image from 'next/image';
 // import prisma from './lib/db';
 
 export default async function page() {
-	// const project = await prisma.project.findMany({
-	// 	where: { ownerId: "cm3r00rmq000056tl5kwgllct" },
-	// 	include: { owner: true }, // Include the associated owner data
-	// });
-
 	return (
-		<div className='flex flex-col items-center justify-center h-[85vh] text-center gap-y-3'>
-			<div>
+		<div className='flex flex-col items-center justify-center min-h-[80vh] text-center gap-y-8 max-w-md mx-auto'>
+			<div className="relative group">
+				<div className="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 				<Image
 					src="/preview.jpg"
-					alt="Landscape picture"
+					alt="App Preview"
 					width={300}
-					height={200}
-					className='rounded-lg'
+					height={300}
+					className='rounded-xl shadow-2xl relative'
 					priority
 				/>
 			</div>
 
-			<div className='mt-4'>
-				<div className='text-[20px] font-bold'>
-					Time management
-				</div>
-				<div className='text-[14px] mt-2'>
+			<div className='space-y-4 max-w-lg'>
+				<h1 className='text-4xl font-extrabold tracking-tight sm:text-5xl text-primary'>
+					Time Management
+				</h1>
+				<p className='text-muted-foreground text-lg leading-relaxed font-medium'>
 					This productive tool is designed to help you better manage your task project-wise conveniently!
-				</div>
+				</p>
 			</div>
 
-			<button
-				className='mt-4 bg-[#9d00ff] text-white p-2 rounded-lg font-bold w-full'>
-				<a href="/login">Let&apos;s Start</a>
-			</button>
+			<a href="/login" className='w-full'>
+				<button
+					className='w-full bg-primary text-primary-foreground py-3.5 px-6 rounded-full font-semibold text-lg hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300'>
+					Let&apos;s Start
+				</button>
+			</a>
 		</div>
-
 	);
 }
