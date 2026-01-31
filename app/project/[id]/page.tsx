@@ -13,7 +13,6 @@ export default function Page({
 }) {
     const router = useRouter();
     const [projectId, setProjectId] = useState("");
-    const [userId, setUserId] = useState("");
     const [openDelete, setOpenDelete] = useState(false);
 
     useEffect(() => {
@@ -128,7 +127,6 @@ export default function Page({
                                         <button
                                             onClick={() => {
                                                 setOpenDelete(true);
-                                                setUserId(user.userId);
                                             }}
                                             className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg shadow-md"
                                         >
