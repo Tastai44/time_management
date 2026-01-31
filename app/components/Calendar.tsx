@@ -39,10 +39,11 @@ const Calendar = () => {
                     return (
                         <div
                             key={date.getTime()} // Use a unique key
+                            // Updated className logic in Calendar.tsx
                             className={`flex flex-col items-center p-1 rounded-lg cursor-pointer transition-all
                                 ${isSelected
                                     ? "bg-purple-600 text-white text-center border border-purple-600"
-                                    : "bg-white hover:bg-gray-200 text-center border"
+                                    : "bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-center border dark:border-gray-700 dark:text-gray-200"
                                 }
                             `}
                             onClick={() => setSelectedDate(date)}

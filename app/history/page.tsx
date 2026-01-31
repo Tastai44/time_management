@@ -10,11 +10,11 @@ export default function Page() {
     const [projects, setProjects] = useState<IProject[] | null>(null);
     const [searchInput, setSearchInput] = useState("");
     useEffect(() => {
-        const userId = localStorage.getItem("userId");
         const fetchProjects = async () => {
+            const userId = localStorage.getItem("userId");
             if (userId) {
                 try {
-                    const data = await getProjectByUserId(userId);
+                    const data = await getProjectByUserId();
                     const today = new Date(); // Get today's date
                     setProjects(data.filter((project) => new Date(project.endDate) < today)); // Compare dates
                 } catch (error) {

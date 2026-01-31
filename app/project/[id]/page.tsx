@@ -27,7 +27,7 @@ export default function Page({
 
     const handleDelete = async () => {
         try {
-            const res = await deleteProject(projectId, userId);
+            const res = await deleteProject(projectId);
             if (res == 200) {
                 router.back();
             }

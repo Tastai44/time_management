@@ -87,7 +87,7 @@ const AddProject = ({
             await projectSchema.validate(project, { abortEarly: false });
             const projectFormat: IAddProject = { ...project, ownerId: userId };
 
-            await updateProject(projectFormat, projectId, userId);
+            await updateProject(projectFormat, projectId);
             router.push("/home");
             console.log("Project Submitted:", projectFormat);
         } catch (error: unknown) {
