@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { getProjectByUserId } from "../api/project";
 import { IProject } from "../interfaces/Project";
-import Skeleton from "../components/Skeleton";
+import Loading from "../components/Loading";
 import TaskCard from "../components/TaskCard";
 
 
@@ -29,7 +29,7 @@ export default function Page() {
         <>
             {
                 !projects ? (
-                    <Skeleton />
+                    <Loading />
                 ) : (
                     <div className="flex flex-col min-h-screen">
                         {/* Title Section */}

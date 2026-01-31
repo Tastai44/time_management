@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { IUser } from '../interfaces/User';
 import { IProject } from '../interfaces/Project';
 import { getProjectByUserId } from '../api/project';
-import Skeleton from './Skeleton';
+import Loading from './Loading';
 
 type ProtectedRouteProps = {
   children: (user: IUser, projects: IProject[]) => ReactNode; // Declare children as a function
@@ -20,7 +20,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const userId = localStorage.getItem("userId");
     const fetchProjects = async () => {
       if (userId) {
-        const data = await getProjectByUserId(userId);
+        const data = await getProjectByUserId();
         setProjects(data);
       }
     };
@@ -53,7 +53,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           const data = await response.json();
           setUser(data.user); // Set the user data received from the API
           const fetchProjects = async () => {
-            const projectData = await getProjectByUserId(data.user.userId);
+            const projectData = await getProjectByUserId();
             setProjects(projectData);
           };
           fetchProjects();
@@ -69,7 +69,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   if (!user || !projects) {
     return (
-      <Skeleton />
+      <Loading />
     );
   }
 
