@@ -1,6 +1,5 @@
-import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-// import prisma from './lib/db';
 
 export default async function page() {
 	return (
@@ -26,12 +25,12 @@ export default async function page() {
 				</p>
 			</div>
 
-			<a href="/login" className='w-full'>
-				<button
-					className='w-full bg-primary text-primary-foreground py-3.5 px-6 rounded-full font-semibold text-lg hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300'>
-					Let&apos;s Start
-				</button>
-			</a>
+			<Link
+				href="/login"
+				className='w-full bg-primary text-primary-foreground py-3.5 px-6 rounded-full font-semibold text-lg hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300 block text-center'
+			>
+				Let&apos;s Start
+			</Link>
 		</div>
 	);
 }
