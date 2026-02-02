@@ -1,6 +1,5 @@
 'use client';
 import { useState } from "react";
-import { IAddUser } from "../interfaces/User";
 import { login, register } from "../api/user";
 import { useRouter } from 'next/navigation';
 
@@ -26,12 +25,6 @@ export default function Page() {
     const handleAddUser = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        const now = new Date().toISOString();
-        const user: IAddUser = {
-            ...formData,
-            createdAt: now,
-            updatedAt: now,
-        };
         try {
             await register(formData.name, formData.email, formData.password).then(async () => {
                 const user = await login(formData.email, formData.password);
