@@ -14,7 +14,7 @@ export default function Page() {
             try {
                 const data = await getProjectByUserId();
                 const today = new Date(); // Get today's date
-                setProjects(data.filter((project) => new Date(project.endDate) < today)); // Compare dates
+                setProjects(data.filter((project) => new Date(project.endDate) < today) ?? []); // Compare dates
             } catch (error) {
                 console.error("Error fetching projects:", error);
             }
