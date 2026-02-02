@@ -8,7 +8,7 @@ export default function OverallProgrss() {
     const router = useRouter();
     return (
         <ProtectedRoute>
-            {(user: IUser, projects) =>
+            {(_user: IUser, projects) =>
                 <div className="flex items-center justify-between bg-purple-600 text-white p-6 rounded-2xl shadow-lg w-full mt-5">
                     <div>
                         <p className="text-lg font-semibold">Your today&apos;s task</p>
@@ -40,7 +40,7 @@ export default function OverallProgrss() {
                         a 15.9155 15.9155 0 0 1 0 -31.831"
                             />
                         </svg>
-                        <div className="text-lg font-bold text-white">{(projects.filter((data) => data.status == "Done").length / projects.length) * 100}%</div>
+                        <div className="text-lg font-bold text-white">{projects.length > 0 ? Math.round((projects.filter((data) => data.status === "Done").length / projects.length) * 100) : 0}%</div>
                     </div>
                 </div>
             }
