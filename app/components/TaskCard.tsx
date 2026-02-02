@@ -38,7 +38,7 @@ export default function TaskCard(props: IProps) {
                     <span className="mr-2 text-sm">
                         Deadline:
                     </span>
-                    <span>{format(props.endDate, "dd:MM:yyyy")}</span>
+                    <span>{format(new Date(props.endDate), "dd:MM:yyyy")}</span>
                 </div>
                 <div className="bg-purple-100 text-purple-700 text-xs font-semibold py-1 px-3 rounded-lg">{props.status}</div>
             </div>

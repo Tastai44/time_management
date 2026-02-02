@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { getProjectByUserId } from "../api/project";
 import { IProject } from "../interfaces/Project";
 import Loading from "../components/Loading";
@@ -37,7 +38,7 @@ export default function Page() {
                         </div>
 
                         {/* Search & Filter Section */}
-                        <div className="relative w-2.5/4">
+                        <div className="relative w-full md:w-3/4 mx-auto">
                             {/* Search Icon inside Input */}
                             <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5"></i>
                             <input
@@ -55,30 +56,28 @@ export default function Page() {
                                         searchInput !== "" ? (
                                             projects.filter((data) => data.description.includes(searchInput) ||
                                                 data.groupName.includes(searchInput) || data.projectName.includes(searchInput)
-                                            ).map((project, index) => (
-                                                <a key={project.id} href={`/project/${project.id}`}>
+                                            ).map((project) => (
+                                                <Link key={project.id} href={`/project/${project.id}`}>
                                                     <TaskCard
-                                                        key={index}
                                                         projectName={project.projectName}
                                                         groupName={project.groupName}
                                                         description={project.description}
                                                         endDate={project.endDate}
                                                         status={project.status}
                                                     />
-                                                </a>
+                                                </Link>
                                             ))
                                         ) : (
-                                            projects.map((project, index) => (
-                                                <a key={project.id} href={`/project/${project.id}`}>
+                                            projects.map((project) => (
+                                                <Link key={project.id} href={`/project/${project.id}`}>
                                                     <TaskCard
-                                                        key={index}
                                                         projectName={project.projectName}
                                                         groupName={project.groupName}
                                                         description={project.description}
                                                         endDate={project.endDate}
                                                         status={project.status}
                                                     />
-                                                </a>
+                                                </Link>
                                             ))
                                         )
                                     }

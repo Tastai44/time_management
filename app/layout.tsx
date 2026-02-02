@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import Header from "./components/Header";
+import PageLayout from "./components/PageLayout";
 import ThemeProvider from "./components/ThemeProvider";
 
 export default function RootLayout({
@@ -39,9 +40,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Header />
-          <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28 md:pb-12">
-            {children}
-          </main>
+          <PageLayout>{children}</PageLayout>
           <MenuBar />
         </ThemeProvider>
       </body>

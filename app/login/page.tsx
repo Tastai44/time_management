@@ -55,8 +55,8 @@ export default function Page() {
     };
 
     return (
-        <div className="h-screen flex flex-col items-center justify-center p-4">
-            <div className="w-full max-w-md bg-card border border-border p-8 rounded-2xl shadow-xl">
+        <div className="h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
+            <div className="w-full max-w-md bg-card border border-border p-8 rounded-2xl shadow-xl overflow-hidden">
                 {isRegister ? (
                     <>
                         <h1 className="text-3xl font-bold text-foreground text-center mb-2">Create Account</h1>
