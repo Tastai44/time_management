@@ -38,11 +38,11 @@ export default function TaskCard(props: IProps) {
                     <span className="mr-2 text-sm">
                         Deadline:
                     </span>
-                    <span>{format(new Date(props.endDate), "dd:MM:yyyy")}</span>
+                    <span>{!isNaN(new Date(props.endDate).getTime()) ? format(new Date(props.endDate), "dd:MM:yyyy") : "Invalid Date"}</span>
                 </div>
                 <div className="bg-purple-100 text-purple-700 text-xs font-semibold py-1 px-3 rounded-lg">{props.status}</div>
             </div>
-        </div>
+        </div >
 
     );
 }

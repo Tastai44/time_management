@@ -12,6 +12,7 @@ export default function PageLayout({
 
   return (
     <main
+      suppressHydrationWarning
       className={
         isAuthPage
           ? "flex-1 w-full h-screen" // Full screen for auth/landing pages, no padding

@@ -9,7 +9,7 @@ export default function MenuBar() {
     if (router === "/" || router === "/login" || router === "/addTask") return null;
 
     return (
-        <div className="fixed bottom-0 left-0 w-full z-50 px-4 pb-4 ptr-events-none md:sticky md:top-0 md:bg-transparent md:pointer-events-none">
+        <div className="fixed bottom-0 left-0 w-full z-50 px-4 pb-4 pointer-events-none md:sticky md:top-0 md:bg-transparent md:pointer-events-none">
             {/* Mobile Bottom Bar */}
             <div className="bg-card/90 backdrop-blur-md border border-border/50 shadow-2xl rounded-2xl mx-auto max-w-md md:hidden">
                 <div className="relative flex justify-between items-center px-6 py-3">
@@ -41,8 +41,8 @@ export default function MenuBar() {
 function NavItem({ href, icon, active }: { href: string; icon: string; active: boolean; }) {
     return (
         <Link href={href} className={`flex flex-col items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${active
-                ? 'text-primary bg-primary/10'
-                : 'text-muted-foreground hover:text-primary hover:bg-muted'
+            ? 'text-primary bg-primary/10'
+            : 'text-muted-foreground hover:text-primary hover:bg-muted'
             }`}>
             <i className={`fas ${icon} text-lg mb-0.5`}></i>
         </Link>
