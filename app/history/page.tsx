@@ -11,15 +11,12 @@ export default function Page() {
     const [searchInput, setSearchInput] = useState("");
     useEffect(() => {
         const fetchProjects = async () => {
-            const userId = localStorage.getItem("userId");
-            if (userId) {
-                try {
-                    const data = await getProjectByUserId();
-                    const today = new Date(); // Get today's date
-                    setProjects(data.filter((project) => new Date(project.endDate) < today)); // Compare dates
-                } catch (error) {
-                    console.error("Error fetching projects:", error);
-                }
+            try {
+                const data = await getProjectByUserId();
+                const today = new Date(); // Get today's date
+                setProjects(data.filter((project) => new Date(project.endDate) < today)); // Compare dates
+            } catch (error) {
+                console.error("Error fetching projects:", error);
             }
         };
         fetchProjects();
@@ -45,7 +42,7 @@ export default function Page() {
                             <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5"></i>
                             <input
                                 type="text"
-                                className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-200"
+                                className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-200 bg-background"
                                 placeholder="Search for past projects..."
                                 onChange={(e) => setSearchInput(e.target.value)}
                             />
