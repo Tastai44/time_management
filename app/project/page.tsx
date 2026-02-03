@@ -4,9 +4,10 @@ import { deleteProject } from "@/app/api/project";
 import ConfirmCard from "@/app/components/ConfirmCard";
 import ProtectedRoute from "@/app/components/protectRoute";
 import { IUser } from "@/app/interfaces/User";
-import { useState } from "react";
+import { IProject } from "@/app/interfaces/Project";
+import { useState, Suspense } from "react";
 
-export default function Page() {
+function ProjectContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const projectId = searchParams.get("id");
@@ -36,7 +37,7 @@ export default function Page() {
 
     return (
         <ProtectedRoute>
-            {(_user: IUser, projects) => {
+            {(_user: IUser, projects: IProject[]) => {
                 // 1. Safety check to ensure projects is an array
                 const projectList = projects || [];
                 const filteredProjects = projectList.filter((project) => project?.id === projectId);
@@ -160,5 +161,13 @@ export default function Page() {
                 );
             }}
         </ProtectedRoute>
+    );
+}
+
+export default function Page() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ProjectContent />
+        </Suspense>
     );
 }
