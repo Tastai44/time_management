@@ -16,7 +16,9 @@ export default function Page({
     const [openDelete, setOpenDelete] = useState(false);
 
     useEffect(() => {
-        params.then((res) => setProjectId(res.id));
+        if (params) {
+            params.then((res) => setProjectId(res.id));
+        }
     }, [params]);
 
     const handleEdit = (projectId: string) => {
