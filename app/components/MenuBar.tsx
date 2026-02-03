@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 export default function MenuBar() {
     const router = usePathname();
     // Only show on main pages
-    if (router === "/" || router === "/login" || router === "/addTask") return null;
+    if (router === "/" || router === "/login" || router === "/addTask") return <div className="hidden" />;
 
     return (
         <div className="fixed bottom-0 left-0 w-full z-50 px-4 pb-4 pointer-events-none md:sticky md:top-0 md:bg-transparent md:pointer-events-none">

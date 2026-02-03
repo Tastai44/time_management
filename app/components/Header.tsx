@@ -6,7 +6,7 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const router = usePathname();
-  if (router === "/" || router === "/login") return null;
+  if (router === "/" || router === "/login") return <header className="hidden" />;
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-border px-4 md:px-8 py-3 flex justify-between items-center transition-all duration-300">
