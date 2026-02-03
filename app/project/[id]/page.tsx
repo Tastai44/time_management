@@ -1,40 +1,40 @@
 'use client';
-import { useRouter } from "next/navigation";
-import { deleteProject } from "@/app/api/project";
-import ConfirmCard from "@/app/components/ConfirmCard";
-import ProtectedRoute from "@/app/components/protectRoute";
-import { IUser } from "@/app/interfaces/User";
-import { use, useState } from "react";
+// import { useRouter } from "next/navigation";
+// import { deleteProject } from "@/app/api/project";
+// import ConfirmCard from "@/app/components/ConfirmCard";
+// import ProtectedRoute from "@/app/components/protectRoute";
+// import { IUser } from "@/app/interfaces/User";
+// import { use, useState } from "react";
 
 export default function Page({
-    params,
+    // params,
 }: {
     params: Promise<{ id: string; }>;
 }) {
-    const router = useRouter();
-    const { id: projectId } = use(params);
+    // const router = useRouter();
+    // const { id: projectId } = use(params);
 
-    const [openDelete, setOpenDelete] = useState(false);
+    // const [openDelete, setOpenDelete] = useState(false);
 
-    const handleEdit = (projectId: string) => {
-        // Logic to edit project
-        router.push(`/addEditTask/${projectId}`);
-    };
+    // const handleEdit = (projectId: string) => {
+    //     // Logic to edit project
+    //     router.push(`/addEditTask/${projectId}`);
+    // };
 
-    const handleDelete = async () => {
-        try {
-            const res = await deleteProject(projectId);
-            if (res == 200) {
-                router.back();
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    // const handleDelete = async () => {
+    //     try {
+    //         const res = await deleteProject(projectId);
+    //         if (res == 200) {
+    //             router.back();
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
-    const handleClose = () => {
-        setOpenDelete(!openDelete);
-    };
+    // const handleClose = () => {
+    //     setOpenDelete(!openDelete);
+    // };
 
     return (
         // <ProtectedRoute>
