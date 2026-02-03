@@ -38,12 +38,12 @@ export default function Page({
 
     return (
         <ProtectedRoute>
-            {(user: IUser, projects) => {
-                const filteredProjects = projects.filter((project) => project.id === projectId);
+            {(_user: IUser, projects) => {
+                const filteredProjects = projects?.filter((project) => project?.id === projectId);
 
-                return filteredProjects.map((project) => (
+                return filteredProjects?.map((project) => (
                     <div
-                        key={project.id}
+                        key={project?.id}
                         className="flex flex-col items-center justify-center bg-gray-100 w-full"
                     >
                         <ConfirmCard
@@ -55,7 +55,7 @@ export default function Page({
                             {/* Header */}
                             <div className="bg-gradient-to-r from-purple-500 to-purple-700 h-24 flex items-center justify-center">
                                 <h2 className="text-white text-xl font-bold">
-                                    {project.projectName || "Project Name"}
+                                    {project?.projectName || "Project Name"}
                                 </h2>
                             </div>
 
@@ -65,7 +65,7 @@ export default function Page({
                                 <div>
                                     <h3 className="text-purple-800 text-sm font-semibold">Group Name</h3>
                                     <p className="text-gray-600">
-                                        {project.groupName || "No group name available"}
+                                        {project?.groupName || "No group name available"}
                                     </p>
                                 </div>
 
@@ -73,7 +73,7 @@ export default function Page({
                                 <div>
                                     <h3 className="text-purple-800 text-sm font-semibold">Description</h3>
                                     <p className="text-gray-600">
-                                        {project.description || "No description available"}
+                                        {project?.description || "No description available"}
                                     </p>
                                 </div>
 
@@ -82,16 +82,16 @@ export default function Page({
                                     <div>
                                         <h3 className="text-purple-800 font-semibold">Start Date</h3>
                                         <p className="text-gray-600">
-                                            {project.startDate
-                                                ? new Date(project.startDate).toLocaleDateString()
+                                            {project?.startDate
+                                                ? new Date(project?.startDate).toLocaleDateString()
                                                 : "N/A"}
                                         </p>
                                     </div>
                                     <div>
                                         <h3 className="text-purple-800 font-semibold">End Date</h3>
                                         <p className="text-gray-600">
-                                            {project.endDate
-                                                ? new Date(project.endDate).toLocaleDateString()
+                                            {project?.endDate
+                                                ? new Date(project?.endDate).toLocaleDateString()
                                                 : "N/A"}
                                         </p>
                                     </div>
