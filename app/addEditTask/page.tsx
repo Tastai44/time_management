@@ -100,7 +100,7 @@ const AddProject = () => {
                         <form onSubmit={handleSubmit}>
                             {/* Task Group */}
                             <div className="mb-4">
-                                <label htmlFor="groupName" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="groupName" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     Task Group
                                 </label>
                                 <select
@@ -108,7 +108,7 @@ const AddProject = () => {
                                     name="groupName"
                                     value={project.groupName}
                                     onChange={handleInputChange}
-                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.groupName ? "border-red-500" : "border-gray-300"
+                                    className={`dark:bg-black mt-1 block w-full p-2 border ${errors.groupName ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 >
                                     <option value="Work">Work</option>
@@ -122,7 +122,7 @@ const AddProject = () => {
 
                             {/* Project Name */}
                             <div className="mb-4">
-                                <label htmlFor="projectName" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="projectName" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     Project Name
                                 </label>
                                 <input
@@ -132,7 +132,7 @@ const AddProject = () => {
                                     value={project.projectName}
                                     onChange={handleInputChange}
                                     placeholder="Enter project name"
-                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.projectName ? "border-red-500" : "border-gray-300"
+                                    className={`dark:bg-black mt-1 block w-full p-2 border ${errors.projectName ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.projectName && (
@@ -142,7 +142,7 @@ const AddProject = () => {
 
                             {/* Description */}
                             <div className="mb-4">
-                                <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="description" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     Description
                                 </label>
                                 <textarea
@@ -151,7 +151,7 @@ const AddProject = () => {
                                     value={project.description}
                                     onChange={handleInputChange}
                                     placeholder="Enter project description"
-                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.description ? "border-red-500" : "border-gray-300"
+                                    className={`dark:bg-black mt-1 block w-full p-2 border ${errors.description ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                     rows={3}
                                 />
@@ -161,7 +161,7 @@ const AddProject = () => {
                             </div>
 
                             <div className="mb-4">
-                                <label htmlFor="taskGroup" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="taskGroup" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     Status
                                 </label>
                                 <select
@@ -169,7 +169,7 @@ const AddProject = () => {
                                     name="status"
                                     value={project.status}
                                     onChange={handleInputChange}
-                                    className="dark:text-black mt-1 block w-full p-2 rounded-xl border border-gray-300 
+                                    className="dark:bg-black mt-1 block w-full p-2 rounded-xl border border-gray-300 
                                 bg-white outline-none"
                                 >
                                     <option value="Todo">Todo</option>
@@ -179,7 +179,7 @@ const AddProject = () => {
 
                             {/* Start Date */}
                             <div className="mb-4">
-                                <label htmlFor="startDate" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="startDate" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     Start Date
                                 </label>
                                 <input
@@ -188,7 +188,7 @@ const AddProject = () => {
                                     type="date"
                                     value={project.startDate}
                                     onChange={handleInputChange}
-                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.startDate ? "border-red-500" : "border-gray-300"
+                                    className={`dark:bg-black mt-1 block w-full p-2 border ${errors.startDate ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.startDate && (
@@ -198,7 +198,7 @@ const AddProject = () => {
 
                             {/* End Date */}
                             <div className="mb-4">
-                                <label htmlFor="endDate" className="block text-sm font-medium text-gray-600">
+                                <label htmlFor="endDate" className="block text-sm font-medium text-gray-600 dark:text-white">
                                     End Date
                                 </label>
                                 <input
@@ -207,7 +207,7 @@ const AddProject = () => {
                                     type="date"
                                     value={project.endDate}
                                     onChange={handleInputChange}
-                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.endDate ? "border-red-500" : "border-gray-300"
+                                    className={`dark:bg-black mt-1 block w-full p-2 border ${errors.endDate ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.endDate && (

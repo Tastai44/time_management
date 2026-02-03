@@ -1,16 +1,19 @@
 'use client';
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { deleteProject } from "@/app/api/project";
 import ConfirmCard from "@/app/components/ConfirmCard";
 import ProtectedRoute from "@/app/components/protectRoute";
 import { IUser } from "@/app/interfaces/User";
 import { IProject } from "@/app/interfaces/Project";
-import { useState, Suspense } from "react";
+import { useState, use } from "react";
 
-function ProjectContent() {
+export default function Page({
+    params,
+}: {
+    params: Promise<{ id: string; }>;
+}) {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const projectId = searchParams.get("id");
+    const { id: projectId } = use(params);
 
     const [openDelete, setOpenDelete] = useState(false);
 
@@ -161,12 +164,4 @@ function ProjectContent() {
             }}
         </ProtectedRoute>
     );
-}
-
-export default function Page() {
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <ProjectContent />
-        </Suspense>
-    );
-}
+};
