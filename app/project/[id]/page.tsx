@@ -44,12 +44,12 @@ export default function Page({
                 const filteredProjects = projectList.filter((project) => project?.id === projectId);
 
                 // 2. Helper to formatting dates consistently on Server and Client
-                const formatDate = (dateString: string) => {
-                    if (!dateString) return "N/A";
-                    // Use a fixed locale (like 'en-GB' or 'en-US') to ensure Server and Client match.
-                    // Alternatively, use a library like date-fns or dayjs.
-                    return new Date(dateString).toLocaleDateString('en-GB');
-                };
+                // const formatDate = (dateString: string) => {
+                //     if (!dateString) return "N/A";
+                //     // Use a fixed locale (like 'en-GB' or 'en-US') to ensure Server and Client match.
+                //     // Alternatively, use a library like date-fns or dayjs.
+                //     return new Date(dateString).toLocaleDateString('en-GB');
+                // };
 
                 return (
                     <div className="flex flex-col items-center justify-center bg-gray-100 w-full">
@@ -96,7 +96,7 @@ export default function Page({
                                     </div>
 
                                     {/* Dates - Using the safe formatter */}
-                                    <div className="flex justify-between text-sm">
+                                    {/* <div className="flex justify-between text-sm">
                                         <div>
                                             <h3 className="text-purple-800 font-semibold">Start Date</h3>
                                             <p className="text-gray-600">
@@ -109,17 +109,17 @@ export default function Page({
                                                 {formatDate(project?.endDate)}
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     {/* Status */}
                                     <div>
                                         <h3 className="text-purple-800 text-sm font-semibold">Status</h3>
                                         <span
                                             className={`px-3 py-1 text-xs rounded-full ${project.status === "Completed"
-                                                    ? "bg-green-100 text-green-700"
-                                                    : project.status === "In Progress"
-                                                        ? "bg-yellow-100 text-yellow-700"
-                                                        : "bg-red-100 text-red-700"
+                                                ? "bg-green-100 text-green-700"
+                                                : project.status === "In Progress"
+                                                    ? "bg-yellow-100 text-yellow-700"
+                                                    : "bg-red-100 text-red-700"
                                                 }`}
                                         >
                                             {project.status || "Unknown"}
