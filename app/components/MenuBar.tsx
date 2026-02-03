@@ -24,7 +24,6 @@ export default function MenuBar() {
                             </Link>
                         </div>
                     </div>
-
                     <NavItem href="/history" icon="fa-book" active={router === '/history'} />
                     <NavItem href="/profile" icon="fa-user" active={router === '/profile'} />
                 </div>
