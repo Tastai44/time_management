@@ -93,7 +93,7 @@ const AddProject = () => {
                             >
                                 <i className="fa-solid fa-arrow-left text-lg"></i>
                             </div>
-                            <div className="text-xl font-bold text-gray-800">Add Project</div>
+                            <div className="text-xl font-bold text-gray-800 dark:text-white">Add Project</div>
                             <div />
                         </div>
 
@@ -108,7 +108,7 @@ const AddProject = () => {
                                     name="groupName"
                                     value={project.groupName}
                                     onChange={handleInputChange}
-                                    className={`mt-1 block w-full p-2 border ${errors.groupName ? "border-red-500" : "border-gray-300"
+                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.groupName ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 >
                                     <option value="Work">Work</option>
@@ -132,7 +132,7 @@ const AddProject = () => {
                                     value={project.projectName}
                                     onChange={handleInputChange}
                                     placeholder="Enter project name"
-                                    className={`mt-1 block w-full p-2 border ${errors.projectName ? "border-red-500" : "border-gray-300"
+                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.projectName ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.projectName && (
@@ -151,7 +151,7 @@ const AddProject = () => {
                                     value={project.description}
                                     onChange={handleInputChange}
                                     placeholder="Enter project description"
-                                    className={`mt-1 block w-full p-2 border ${errors.description ? "border-red-500" : "border-gray-300"
+                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.description ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                     rows={3}
                                 />
@@ -169,7 +169,7 @@ const AddProject = () => {
                                     name="status"
                                     value={project.status}
                                     onChange={handleInputChange}
-                                    className="mt-1 block w-full p-2 rounded-xl border border-gray-300 
+                                    className="dark:text-black mt-1 block w-full p-2 rounded-xl border border-gray-300 
                                 bg-white outline-none"
                                 >
                                     <option value="Todo">Todo</option>
@@ -188,7 +188,7 @@ const AddProject = () => {
                                     type="date"
                                     value={project.startDate}
                                     onChange={handleInputChange}
-                                    className={`mt-1 block w-full p-2 border ${errors.startDate ? "border-red-500" : "border-gray-300"
+                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.startDate ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.startDate && (
@@ -207,7 +207,7 @@ const AddProject = () => {
                                     type="date"
                                     value={project.endDate}
                                     onChange={handleInputChange}
-                                    className={`mt-1 block w-full p-2 border ${errors.endDate ? "border-red-500" : "border-gray-300"
+                                    className={`dark:text-black mt-1 block w-full p-2 border ${errors.endDate ? "border-red-500" : "border-gray-300"
                                         } rounded-xl bg-white outline-none`}
                                 />
                                 {errors.endDate && (

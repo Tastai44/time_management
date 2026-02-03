@@ -74,7 +74,7 @@ export default function Page() {
                 <OverallProgrss />
 
                 <div className="flex items-center space-x-2 mt-5 mb-3">
-                    <h2 className="text-xl font-bold text-gray-800">In Progress</h2>
+                    <h2 className="text-xl font-bold text-gray-800 dark:text-white">In Progress</h2>
                     <div className="bg-purple-100 text-purple-600 text-[12px] font-medium px-2 py-0.5 rounded-full">
                         {projects.filter((data) => data.status === "Doing" || data.status == "Todo").length}
                     </div>
@@ -98,11 +98,11 @@ export default function Page() {
                     </div>
                 </div>
                 <div className="flex items-center space-x-2 mt-5 mb-3">
-                    <h2 className="text-xl font-bold text-gray-800">Task Groups</h2>
+                    <h2 className="text-xl font-bold text-gray-800 dark:text-white">Task Groups</h2>
                 </div>
                 {projects.map((data) => (
                     data.groupName === "Work" ? (
-                        <div key={`work-${data.id}`}>
+                        <div key={`work-${data.id}`} className="mb-3">
                             <TaskGroupCard
                                 groupName={data.groupName}
                                 taskNumber={projects.filter((data) => data.groupName === "Work").length}
@@ -110,7 +110,7 @@ export default function Page() {
                             />
                         </div>
                     ) : data.groupName === "Personal" ? (
-                        <div key={`personal-${data.id}`}>
+                        <div key={`personal-${data.id}`} className="mb-3">
                             <TaskGroupCard
                                 groupName={data.groupName}
                                 taskNumber={projects.filter((data) => data.groupName === "Personal").length}
@@ -118,7 +118,7 @@ export default function Page() {
                             />
                         </div>
                     ) : (
-                        <div key={`others-${data.id}`}>
+                        <div key={`others-${data.id}`} className="mb-3">
                             <TaskGroupCard
                                 groupName={data.groupName}
                                 taskNumber={projects.filter((data) => data.groupName === "Others").length}

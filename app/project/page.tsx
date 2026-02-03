@@ -11,7 +11,6 @@ function ProjectContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const projectId = searchParams.get("id");
-    console.log(projectId);
 
     const [openDelete, setOpenDelete] = useState(false);
 
@@ -51,7 +50,7 @@ function ProjectContent() {
                 };
 
                 return (
-                    <div className="flex flex-col items-center justify-center bg-gray-100 w-full">
+                    <div className="flex flex-col items-center justify-center w-full">
 
                         {/* 3. FIX: Move Modal OUTSIDE the loop. 
                    Ideally, 'openDelete' should track the ID of the item to delete, 

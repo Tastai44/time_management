@@ -32,7 +32,7 @@ export default function Page() {
                     <div className="flex flex-col min-h-screen">
                         {/* Title Section */}
                         <div className="flex justify-center items-center mb-8">
-                            <div className="text-3xl font-extrabold text-gray-900 tracking-wide">
+                            <div className="text-3xl font-extrabold text-gray-900 tracking-wide dark:text-white">
                                 History
                             </div>
                         </div>

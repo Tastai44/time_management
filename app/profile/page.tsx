@@ -15,7 +15,7 @@ export default function Page() {
                             <div className="flex flex-col justify-center items-center mb-10 gap-6">
                                 <div className='relative flex flex-row  justify-end items-center w-full mb-8'>
                                     <div></div>
-                                    <div className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-extrabold text-gray-900 tracking-wide text-center">
+                                    <div className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-extrabold text-gray-900 tracking-wide text-center dark:text-white">
                                         Profile
                                     </div>
                                     <div>
@@ -46,13 +46,13 @@ export default function Page() {
                             {
                                 !isEdit ? (
                                     <div className="text-center">
-                                        <div className="text-lg font-semibold text-gray-900">{user.name}</div>
-                                        <div className="text-sm text-gray-700">{user.email}</div>
+                                        <div className="text-lg font-semibold text-gray-900 dark:text-white">{user.name}</div>
+                                        <div className="text-sm text-gray-700 dark:text-white">{user.email}</div>
                                     </div>
                                 ) : (
                                     <div className='flex flex-col gap-1 w-70%'>
-                                        <input type="text" name='name' className={`mt-1 block w-full p-2 border border-purple-500 rounded-xl bg-white outline-none`} defaultValue={user.name} />
-                                        <input type="text" name="email" className={`mt-1 block w-full p-2 border border-purple-500 rounded-xl bg-white outline-none`} defaultValue={user.email} />
+                                        <input type="text" name='name' className={`mt-1 block w-full p-2 border border-purple-500 rounded-xl bg-white outline-none dark:text-black`} defaultValue={user.name} />
+                                        <input type="text" name="email" className={`mt-1 block w-full p-2 border border-purple-500 rounded-xl bg-white outline-none dark:text-black`} defaultValue={user.email} />
                                     </div>
                                 )
                             }
