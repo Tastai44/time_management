@@ -4,7 +4,7 @@ import { deleteProject } from "@/app/api/project";
 import ConfirmCard from "@/app/components/ConfirmCard";
 import ProtectedRoute from "@/app/components/protectRoute";
 import { IUser } from "@/app/interfaces/User";
-import { useEffect, useState } from "react";
+import { use, useState } from "react";
 
 export default function Page({
     params,
@@ -12,14 +12,9 @@ export default function Page({
     params: Promise<{ id: string; }>;
 }) {
     const router = useRouter();
-    const [projectId, setProjectId] = useState("");
-    const [openDelete, setOpenDelete] = useState(false);
+    const { id: projectId } = use(params);
 
-    useEffect(() => {
-        if (params) {
-            params.then((res) => setProjectId(res.id));
-        }
-    }, [params]);
+    const [openDelete, setOpenDelete] = useState(false);
 
     const handleEdit = (projectId: string) => {
         // Logic to edit project
