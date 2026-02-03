@@ -85,7 +85,7 @@ export default function Page() {
                             projects
                                 .filter((data) => data.status === "Doing" || data.status === "Todo")
                                 .map((data) => (
-                                    <a key={data.id} href={`/project/${data.id}`}>
+                                    <a key={data.id} href={`/project?id=${data.id}`}>
                                         <ProgressCard
                                             taskGroup={data.groupName}
                                             projectName={data.projectName}

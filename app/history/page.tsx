@@ -57,7 +57,7 @@ export default function Page() {
                                             projects.filter((data) => data.description.includes(searchInput) ||
                                                 data.groupName.includes(searchInput) || data.projectName.includes(searchInput)
                                             ).map((project) => (
-                                                <Link key={project.id} href={`/project/${project.id}`}>
+                                                <Link key={project.id} href={`/project?id=${project.id}`}>
                                                     <TaskCard
                                                         projectName={project.projectName}
                                                         groupName={project.groupName}
@@ -69,7 +69,7 @@ export default function Page() {
                                             ))
                                         ) : (
                                             projects.map((project) => (
-                                                <Link key={project.id} href={`/project/${project.id}`}>
+                                                <Link key={project.id} href={`/project?id=${project.id}`}>
                                                     <TaskCard
                                                         projectName={project.projectName}
                                                         groupName={project.groupName}

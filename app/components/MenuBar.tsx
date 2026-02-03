@@ -11,7 +11,7 @@ export default function MenuBar() {
     return (
         <div className="fixed bottom-0 left-0 w-full z-50 px-4 pb-4 pointer-events-none md:sticky md:top-0 md:bg-transparent md:pointer-events-none">
             {/* Mobile Bottom Bar */}
-            <div className="bg-card/90 backdrop-blur-md border border-border/50 shadow-2xl rounded-2xl mx-auto max-w-md md:hidden">
+            <div className="bg-card/90 backdrop-blur-md border border-border/50 shadow-2xl rounded-2xl mx-auto max-w-md md:hidden pointer-events-auto">
                 <div className="relative flex justify-between items-center px-6 py-3">
                     <NavItem href="/home" icon="fa-home" active={router === '/home'} />
                     <NavItem href="/calendar" icon="fa-calendar-alt" active={router === '/calendar'} />

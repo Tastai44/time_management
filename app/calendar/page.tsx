@@ -89,7 +89,7 @@ export default function Page() {
                                         (format(data.endDate, "yyyy-MM-dd") >= format(selectedDate, "yyyy-MM-dd"))
                                     )
                                     .map((project, index) => (
-                                        <a key={project.id} href={`/project/${project.id}`}>
+                                        <a key={project.id} href={`/project?id=${project.id}`}>
                                             <TaskCard
                                                 key={index}
                                                 projectName={project.projectName}
@@ -105,7 +105,7 @@ export default function Page() {
                                     (format(data.startDate, "yyyy-MM-dd") <= format(selectedDate, "yyyy-MM-dd")) &&
                                     (format(data.endDate, "yyyy-MM-dd") >= format(selectedDate, "yyyy-MM-dd"))
                                 ).map((project, index) => (
-                                    <a key={project.id} href={`/project/${project.id}`}>
+                                    <a key={project.id} href={`/project?id=${project.id}`}>
                                         <TaskCard
                                             key={index}
                                             projectName={project.projectName}
